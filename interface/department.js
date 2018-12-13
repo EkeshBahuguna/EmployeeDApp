@@ -16,13 +16,11 @@ app.route.put('/department', async function (req) {
         countryCode: req.query.countryCode
     };
     var response = await httpCall.call('POST', `/api/accounts/open`, ac_params);
-    if (response && !response.success) {
+    if (response && !response.success)
         return response;
-    }
     if (response && response.account) {
-        if (!response.account.status) {
+        if (!response.account.status)
             return { error: "wallet not verified!" };
-        }
         let address = req.query.address.slice(0, -2);
         let name = req.query.name;
         let deptName = req.query.deptName;
